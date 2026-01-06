@@ -1,0 +1,103 @@
+---
+import { site } from '../data/site';
+
+type NavItem = { label: string; href: string };
+const nav: NavItem[] = [
+	{ label: 'Home', href: '/' },
+	{ label: 'Projects', href: '/projects' },
+	{ label: 'About', href: '/about' },
+	{ label: 'Resume', href: '/resume' },
+];
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
+---
+
+<header class="sticky top-0 z-20 border-b border-[rgb(var(--border))] bg-[rgb(var(--bg))]/85 backdrop-blur">
+	<div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-4">
+		<div class="min-w-0">
+			<a class="focus-ring inline-flex items-baseline gap-3 no-underline" href="/">
+				<span class="mono text-sm font-semibold tracking-tight text-[rgb(var(--fg))]">
+					{site.name}
+				</span>
+				<span class="hidden text-sm text-[rgb(var(--muted))] sm:inline">{site.role}</span>
+			</a>
+		</div>
+
+		<nav class="hidden items-center gap-1 sm:flex" aria-label="Primary">
+			{nav.map((item) => (
+				<a
+					class:list={[
+						'focus-ring rounded-md px-3 py-2 text-sm no-underline',
+						isActive(item.href)
+							? 'bg-[rgb(var(--card))] text-[rgb(var(--fg))] shadow-sm ring-1 ring-[rgb(var(--border))]'
+							: 'text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]',
+					]}
+					href={item.href}
+				>
+					{item.label}
+				</a>
+			))}
+		</nav>
+
+		<div class="flex items-center gap-2">
+			<a
+				class="focus-ring hidden rounded-md px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:text-[rgb(var(--fg))] sm:inline"
+				href={`mailto:${site.email}`}
+			>
+				Contact
+			</a>
+			<a
+				class="focus-ring hidden rounded-md px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:text-[rgb(var(--fg))] sm:inline"
+				href={site.github}
+				target="_blank"
+				rel="noreferrer"
+			>
+				GitHub
+			</a>
+			<a
+				class="focus-ring hidden rounded-md px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:text-[rgb(var(--fg))] sm:inline"
+				href={site.linkedin}
+				target="_blank"
+				rel="noreferrer"
+			>
+				LinkedIn
+			</a>
+
+			<button
+				type="button"
+				class="focus-ring rounded-md border border-[rgb(var(--border))] bg-[rgb(var(--card))] px-3 py-2 text-sm text-[rgb(var(--fg))] shadow-sm"
+				data-theme-toggle
+				aria-label="Toggle dark mode"
+			>
+				<span class="mono" data-theme-label>Theme</span>
+			</button>
+		</div>
+	</div>
+
+	<nav class="border-t border-[rgb(var(--border))] sm:hidden" aria-label="Primary (mobile)">
+		<div class="mx-auto flex max-w-5xl items-center gap-1 overflow-x-auto px-2 py-2">
+			{nav.map((item) => (
+				<a
+					class:list={[
+						'focus-ring whitespace-nowrap rounded-md px-3 py-2 text-sm no-underline',
+						isActive(item.href)
+							? 'bg-[rgb(var(--card))] text-[rgb(var(--fg))] shadow-sm ring-1 ring-[rgb(var(--border))]'
+							: 'text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]',
+					]}
+					href={item.href}
+				>
+					{item.label}
+				</a>
+			))}
+			<a
+				class="focus-ring whitespace-nowrap rounded-md px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:text-[rgb(var(--fg))]"
+				href={`mailto:${site.email}`}
+			>
+				Email
+			</a>
+		</div>
+	</nav>
+</header>
+
+

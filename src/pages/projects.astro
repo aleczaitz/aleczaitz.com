@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects, site } from '../data/site';
+---
+
+<Layout
+	title={`Projects — ${site.name}`}
+	description={`Selected engineering work by ${site.name}, including role, tradeoffs, tech stack, and impact.`}
+>
+	<header class="space-y-3">
+		<h1 class="text-3xl font-semibold tracking-tight text-[rgb(var(--fg))]">Projects</h1>
+		<p class="max-w-2xl text-base leading-7 text-[rgb(var(--muted))]">
+			A focused set of projects with the decisions that mattered: constraints, tradeoffs, and outcomes.
+		</p>
+	</header>
+
+	<section class="mt-8 grid gap-4">
+		{projects.map((p) => <ProjectCard project={p} variant="full" />)}
+	</section>
+</Layout>
+
+

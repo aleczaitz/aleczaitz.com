@@ -1,46 +1,68 @@
-# Astro Starter Kit: Basics
+# aleczaitz.com — Astro Portfolio
 
-```sh
-npm create astro@latest -- --template basics
-```
+A clean, recruiter-friendly developer portfolio built with **Astro** + **Tailwind CSS**.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Routes
 
-## 🚀 Project Structure
+- **`/`**: Hero + featured projects + primary CTAs (resume + email)
+- **`/projects`**: All projects with role, tradeoffs, tech, and impact
+- **`/about`**: Background, focus areas, and what I’m seeking
+- **`/resume`**: One-click PDF download (always linked in nav/footer)
 
-Inside of your Astro project, you'll see the following folders and files:
+## Project Structure
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+src/
+  components/
+    ProjectCard.astro
+    SiteFooter.astro
+    SiteHeader.astro
+  data/
+    site.ts            # single source of truth for name/email/socials/projects
+  layouts/
+    Layout.astro       # SEO/OG metadata + header/footer + dark-mode script
+  pages/
+    index.astro        # /
+    projects.astro     # /projects
+    about.astro        # /about
+    resume.astro       # /resume
+  styles/
+    global.css         # Tailwind v4 + tokens + dark-mode variant
+public/
+  resume.pdf
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Local Development
 
-## 🧞 Commands
+```bash
+npm install
+npm run dev
+```
 
-All commands are run from the root of the project, from a terminal:
+Build/preview:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```bash
+npm run build
+npm run preview
+```
 
-## 👀 Want to learn more?
+## Editing Content
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Update **`src/data/site.ts`** to change:
+
+- name/role/value proposition
+- email + GitHub + LinkedIn
+- project list and featured projects
+
+Replace **`public/resume.pdf`** with your real resume (keep the filename the same).
+
+## Deployment
+
+This is a static Astro site, so it works well on:
+
+- **Vercel**
+- **Netlify**
+- **Cloudflare Pages**
+- **GitHub Pages** (via static output)
+
+Build output is in **`dist/`**.

@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+
+const resumeHref = '/resume.pdf';
+---
+
+<Layout
+	title={`Resume — ${site.name}`}
+	description={`Download ${site.name}'s resume as a PDF and get in touch by email.`}
+>
+	<header class="space-y-3">
+		<h1 class="text-3xl font-semibold tracking-tight text-[rgb(var(--fg))]">Resume</h1>
+		<p class="max-w-2xl text-base leading-7 text-[rgb(var(--muted))]">
+			One-click download. If you’d like a tailored version for a role, email me.
+		</p>
+	</header>
+
+	<section class="mt-8 grid gap-4 sm:grid-cols-2">
+		<div class="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] p-6 shadow-sm">
+			<h2 class="mono text-sm font-semibold uppercase tracking-wider text-[rgb(var(--fg))]">
+				Download
+			</h2>
+			<div class="mt-4 flex flex-wrap gap-3">
+				<a
+					class="focus-ring inline-flex items-center justify-center rounded-md bg-[rgb(var(--accent))] px-4 py-2 text-sm font-semibold text-white no-underline shadow-sm hover:opacity-95"
+					href={resumeHref}
+					download
+				>
+					Download PDF
+				</a>
+				<a
+					class="focus-ring inline-flex items-center justify-center rounded-md border border-[rgb(var(--border))] bg-[rgb(var(--bg))] px-4 py-2 text-sm font-semibold text-[rgb(var(--fg))] no-underline shadow-sm hover:border-[rgb(var(--accent))]"
+					href={`mailto:${site.email}`}
+				>
+					Email
+				</a>
+			</div>
+			<p class="mt-4 text-sm text-[rgb(var(--muted))]">
+				File: <span class="mono">public/resume.pdf</span>
+			</p>
+		</div>
+
+		<div class="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] p-6 shadow-sm">
+			<h2 class="mono text-sm font-semibold uppercase tracking-wider text-[rgb(var(--fg))]">
+				Quick notes
+			</h2>
+			<ul class="mt-4 list-disc space-y-2 pl-4 text-sm leading-6 text-[rgb(var(--muted))]">
+				<li>Prefer roles with meaningful ownership and measurable outcomes.</li>
+				<li>Happy to walk through tradeoffs and decisions behind recent projects.</li>
+				<li>Availability: <span class="mono">on request</span></li>
+			</ul>
+		</div>
+	</section>
+</Layout>
+
+
