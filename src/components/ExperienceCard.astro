@@ -1,0 +1,85 @@
+---
+import type { Experience } from '../data/site';
+
+type Props = {
+	experience: Experience;
+	variant?: 'compact' | 'full';
+};
+
+const { experience, variant = 'full' } = Astro.props;
+const isFull = variant === 'full';
+const showDates = Boolean(experience.start || experience.end);
+---
+
+<article id={experience.slug} class="grid-panel overflow-hidden">
+	<div class="grid gap-0">
+		<header class="grid grid-cols-1 gap-2 border-b border-[rgb(var(--border))] p-5 sm:grid-cols-[1fr_auto] sm:items-baseline">
+			<h3 class="mono text-base font-semibold tracking-tight text-[rgb(var(--fg))]">{experience.org}</h3>
+			<p class="text-sm text-[rgb(var(--muted))]">{experience.title}</p>
+			<div class="sm:col-span-2 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+				{experience.summary ? (
+					<p class="text-sm leading-6 text-[rgb(var(--muted))]">{experience.summary}</p>
+				) : null}
+				{showDates ? (
+					<p class="mono text-xs text-[rgb(var(--muted))]">
+						{experience.start ?? ''}
+						{experience.end ? ` — ${experience.end}` : ''}
+						{experience.location ? ` · ${experience.location}` : ''}
+					</p>
+				) : null}
+			</div>
+		</header>
+
+		{isFull && (
+			<div class="grid border-b border-[rgb(var(--border))] sm:grid-cols-2">
+				<div class="p-5 sm:border-r sm:border-[rgb(var(--border))]">
+					<p class="mono text-xs font-semibold uppercase tracking-wider text-[rgb(var(--fg))]">
+						Highlights
+					</p>
+					{experience.highlights?.length ? (
+						<ul class="mt-3 list-disc space-y-1.5 pl-4 text-sm leading-6 text-[rgb(var(--muted))]">
+							{experience.highlights.map((h) => (
+								<li>{h}</li>
+							))}
+						</ul>
+					) : (
+						<p class="mt-3 text-sm text-[rgb(var(--muted))]">—</p>
+					)}
+				</div>
+
+				<div class="p-5">
+					<p class="mono text-xs font-semibold uppercase tracking-wider text-[rgb(var(--fg))]">Tech</p>
+					{experience.tech?.length ? (
+						<div class="mt-3 flex flex-wrap gap-2">
+							{experience.tech.map((t) => (
+								<span class="border border-[rgb(var(--border))] bg-[rgb(var(--bg))] px-2.5 py-1 text-xs text-[rgb(var(--muted))]">
+									{t}
+								</span>
+							))}
+						</div>
+					) : (
+						<p class="mt-3 text-sm text-[rgb(var(--muted))]">—</p>
+					)}
+				</div>
+			</div>
+		)}
+
+		{experience.links?.length ? (
+			<footer class="flex flex-wrap gap-2 p-5">
+				{experience.links.map((l) => (
+					<a
+						class="focus-ring inline-flex items-center gap-2 border border-[rgb(var(--border))] bg-[rgb(var(--bg))] px-3 py-2 text-sm text-[rgb(var(--fg))] no-underline hover:border-[rgb(var(--accent))]"
+						href={l.href}
+						target={l.href.startsWith('http') ? '_blank' : undefined}
+						rel={l.href.startsWith('http') ? 'noreferrer' : undefined}
+					>
+						{l.label}
+						<span class="mono text-xs text-[rgb(var(--muted))]">↗</span>
+					</a>
+				))}
+			</footer>
+		) : null}
+	</div>
+</article>
+
+

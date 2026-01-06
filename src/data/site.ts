@@ -3,6 +3,8 @@ export type ProjectLink = {
 	href: string;
 };
 
+export type ExperienceLink = ProjectLink;
+
 export type Project = {
 	slug: string;
 	name: string;
@@ -12,6 +14,20 @@ export type Project = {
 	tech: string[];
 	impact?: string[];
 	links: ProjectLink[];
+	featured?: boolean;
+};
+
+export type Experience = {
+	slug: string;
+	org: string;
+	title: string;
+	summary?: string;
+	highlights?: string[];
+	tech?: string[];
+	links?: ExperienceLink[];
+	start?: string;
+	end?: string;
+	location?: string;
 	featured?: boolean;
 };
 
@@ -27,7 +43,7 @@ export type Education = {
 
 export const site = {
 	name: 'Alec Zaitz',
-	roles: ['Developer', 'Founder', 'UI/UX Designer', 'Data Enthusiast'],
+	roles: ['Developer', 'Founder', 'UI/UX Designer'],
 	valueProp: 'I build fast, reliable web products with strong UX and pragmatic engineering tradeoffs.',
 	location: 'Utah • Remote-friendly',
 	email: 'aleczaitz@gmail.com',
@@ -65,7 +81,7 @@ export const projects: Project[] = [
 		  'Vitest / Jest (testing)',
 		],
 		impact: [
-		  'Enabled event-goers to discover and reserve nearby driveway parking with secure payments, messaging, and booking management',
+		  'Scaled to 60+ users within 3 months, enabling event-goers to discover and reserve nearby driveway parking with secure payments, messaging, and booking management',
 		  'Improved correctness and debuggability by migrating date handling to standardized UTC ISO strings across the app',
 		  'Reduced host scheduling errors by automatically resolving overlapping availability windows with clear priority rules',
 		],
@@ -130,7 +146,7 @@ export const projects: Project[] = [
 			{ label: "Details", href: '/projects#portfolio' },
 			{ label: 'GitHub', href: 'https://github.com/aleczaitz/aleczaitz.com' },
 		],
-		featured: true,
+		featured: false,
 	},
 	{
 		slug: 'hashing-pixels',
@@ -162,8 +178,86 @@ export const projects: Project[] = [
 		  { label: 'Details', href: '/projects#hashing-pixels' },
 		  { label: 'GitHub', href: 'https://github.com/aleczaitz/HashingPixels' },
 		],
-		featured: true,
+		featured: false,
 	  }
+];
+
+export const experience: Experience[] = [
+	{
+		slug: 'xcel-software-intern',
+		org: 'Xcel Software',
+		title: 'Software Engineer Intern',
+		start: 'May 2024',
+		end: 'Aug 2024',
+		location: 'Remote',
+		summary:
+			'Delivered full-stack mobile features in Flutter + Firebase, improving deployment speed and stability through API integrations and maintainability-focused refactors.',
+		highlights: [
+			'Delivered full-stack mobile features using Flutter, Firebase, and Postman, increasing deployment speed by 25% and boosting app stability.',
+			'Integrated RESTful APIs and cloud services to enhance scalability and reduce feature deployment time by ~25%.',
+			'Collaborated with engineers to optimize UI responsiveness, leading to faster user interactions and smoother app performance.',
+		],
+		tech: ['Flutter', 'Firebase', 'Postman', 'REST APIs'],
+		links: [{ label: 'Xcel Software', href: 'https://jobxcel.ai/' }],
+		featured: true,
+	},
+	{
+		slug: 'parkpal-founder',
+		org: 'ParkPal',
+		title: 'Full-Stack Engineer & Founder',
+		summary:
+		'Built a two-sided marketplace for booking driveway parking near events, with maps-based discovery, real-time messaging, and Stripe checkout on Firebase.',
+		highlights: [
+			'Designed the data model + Cloud Functions for bookings, availability, and conversations across Firestore + server-side validation.',
+			'Shipped a reliable payments flow with Stripe Checkout + webhooks and clear user state transitions.',
+			'Standardized date/time handling on UTC ISO strings to reduce timezone bugs and simplify debugging.',
+		],
+		tech: ['TypeScript', 'React', 'Firebase', 'Stripe', 'Google Maps API', 'Tailwind CSS'],
+		links: [
+			{ label: 'Project details', href: '/projects#parkpal' },
+			{ label: 'Live demo', href: 'https://parkpal.co' },
+		],
+		featured: false,
+	},
+	{
+		slug: 'versionary-cofounder',
+		org: 'Versionary',
+		title: 'Full-Stack Engineer & Co-Founder',
+		summary:
+		'Built a Google-Docs-like collaborative editor with real-time collaboration and Git-style commits + branching, persisted via Supabase.',
+		highlights: [
+			'Designed a low-latency collaboration architecture (WebSocket collab server + REST backend) to keep the editor responsive.',
+			'Bridged CRDT live edits into durable Git snapshots and history for a reliable “versioned docs” experience.',
+			'Improved deployability by removing native git bindings and switching to Git CLI operations.',
+		],
+		tech: ['TypeScript', 'React', 'Yjs', 'Hocuspocus', 'Supabase', 'Node.js'],
+		links: [
+			{ label: 'Project details', href: '/projects#versionary' },
+			{ label: 'Live demo', href: 'https://versionary.app' },
+		],
+		featured: false,
+	},
+	{
+		slug: 'water-lantern-festival',
+		org: 'Water Lantern Festival',
+		title: 'National Events Coordinator',
+		start: 'Jun 2023',
+		end: 'May 2025',
+		location: 'Provo, UT',
+		summary:
+			'Led national event execution, budgeting, and vendor coordination across 30+ events—driving strong participant experiences and measurable financial outcomes.',
+		highlights: [
+			'Coordinated and executed events for upwards of 7,000 participants in 20+ states across the USA.',
+			'Managed financial planning and budgeting for each event to minimize costs and maximize profit margins by 15%+.',
+			'Tracked and reconciled expenses and revenue of 30+ events, working closely with vendors and stakeholders to ensure cost-effective decisions.',
+			'Produced over $500,000 in ticket revenue from sourced events.',
+		],
+		tech: ['Basecamp', 'Google Sheets', 'Webconnex'],
+		links: [
+			{ label: 'Water Lantern Festival', href: 'https://www.waterlanternfestival.com' },
+		],
+		featured: true,
+	},
 ];
 
 export const education: Education[] = [

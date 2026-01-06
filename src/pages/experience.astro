@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ExperienceCard from '../components/ExperienceCard.astro';
+import { experience, site } from '../data/site';
+---
+
+<Layout
+	title={`Experience — ${site.name}`}
+	description={`Work experience for ${site.name}, including roles, outcomes, and technologies used.`}
+>
+	<header class="space-y-3">
+		<h1 class="text-3xl font-semibold tracking-tight text-[rgb(var(--fg))]">Experience</h1>
+		<p class="max-w-2xl text-base leading-7 text-[rgb(var(--muted))]">
+			A focused set of roles with outcomes and the work that mattered.
+		</p>
+	</header>
+
+	<section class="mt-8 grid gap-4">
+		{experience.map((e) => <ExperienceCard experience={e} variant="full" />)}
+	</section>
+</Layout>
+
+

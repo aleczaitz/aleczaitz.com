@@ -35,6 +35,12 @@ const canonicalUrl = new URL(Astro.url.pathname, site.siteUrl).toString();
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+			referrerpolicy="no-referrer"
+		/>
+
 		<script is:inline>
 			(() => {
 				try {

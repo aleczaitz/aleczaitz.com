@@ -3,8 +3,8 @@ import { site } from '../data/site';
 
 type NavItem = { label: string; href: string };
 const nav: NavItem[] = [
-	{ label: 'Home', href: '/' },
 	{ label: 'Projects', href: '/projects' },
+	{ label: 'Experience', href: '/experience' },
 	{ label: 'About', href: '/about' },
 	{ label: 'Resume', href: '/resume' },
 ];
@@ -20,7 +20,6 @@ const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.s
 				<span class="mono text-sm font-semibold tracking-tight text-[rgb(var(--fg))]">
 					{site.name}
 				</span>
-				<span class="hidden text-sm text-[rgb(var(--muted))] sm:inline">{site.roles[0]}</span>
 			</a>
 		</div>
 
@@ -42,26 +41,32 @@ const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.s
 
 		<div class="flex items-center gap-2">
 			<a
-				class="focus-ring hidden px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:text-[rgb(var(--fg))] sm:inline"
+				class="focus-ring hidden size-10 items-center justify-center border border-transparent text-[rgb(var(--muted))] no-underline hover:border-[rgb(var(--border))] hover:text-[rgb(var(--fg))] sm:inline-flex"
 				href={`mailto:${site.email}`}
+				aria-label="Email"
+				title="Email"
 			>
-				Contact
+				<i class="fa-solid fa-envelope leading-none" aria-hidden="true"></i>
 			</a>
 			<a
-				class="focus-ring hidden px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:text-[rgb(var(--fg))] sm:inline"
+				class="focus-ring hidden size-10 items-center justify-center border border-transparent text-[rgb(var(--muted))] no-underline hover:border-[rgb(var(--border))] hover:text-[rgb(var(--fg))] sm:inline-flex"
 				href={site.github}
 				target="_blank"
 				rel="noreferrer"
+				aria-label="GitHub"
+				title="GitHub"
 			>
-				GitHub
+				<i class="fa-brands fa-github leading-none" aria-hidden="true"></i>
 			</a>
 			<a
-				class="focus-ring hidden px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:text-[rgb(var(--fg))] sm:inline"
+				class="focus-ring hidden size-10 items-center justify-center border border-transparent text-[rgb(var(--muted))] no-underline hover:border-[rgb(var(--border))] hover:text-[rgb(var(--fg))] sm:inline-flex"
 				href={site.linkedin}
 				target="_blank"
 				rel="noreferrer"
+				aria-label="LinkedIn"
+				title="LinkedIn"
 			>
-				LinkedIn
+				<i class="fa-brands fa-linkedin-in leading-none" aria-hidden="true"></i>
 			</a>
 
 			<button
