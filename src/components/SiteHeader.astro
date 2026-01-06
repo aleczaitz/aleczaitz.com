@@ -40,6 +40,73 @@ const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.s
 		</nav>
 
 		<div class="flex items-center gap-2">
+			<details class="relative sm:hidden">
+				<summary
+					class="focus-ring [&::-webkit-details-marker]:hidden [&::marker]:hidden list-none cursor-pointer grid size-10 place-items-center border border-[rgb(var(--border))] bg-[rgb(var(--bg))] text-[rgb(var(--fg))]"
+					aria-label="Open menu"
+					title="Menu"
+				>
+					<span class="sr-only">Menu</span>
+					<svg
+						class="size-5"
+						viewBox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+						aria-hidden="true"
+					>
+						<path
+							d="M4 7h16M4 12h16M4 17h16"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						/>
+					</svg>
+				</summary>
+
+				<div
+					class="absolute right-0 top-full mt-2 w-56 overflow-hidden border border-[rgb(var(--border))] bg-[rgb(var(--bg))] shadow-lg"
+				>
+					<nav class="flex flex-col p-2" aria-label="Primary (mobile)">
+						{nav.map((item) => (
+							<a
+								class:list={[
+									'focus-ring px-3 py-2 text-sm no-underline',
+									isActive(item.href)
+										? 'bg-[rgb(var(--card))] text-[rgb(var(--fg))] ring-1 ring-[rgb(var(--border))]'
+										: 'text-[rgb(var(--muted))] hover:bg-[rgb(var(--card))] hover:text-[rgb(var(--fg))]',
+								]}
+								href={item.href}
+							>
+								{item.label}
+							</a>
+						))}
+						<div class="my-2 border-t border-[rgb(var(--border))]"></div>
+						<a
+							class="focus-ring px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:bg-[rgb(var(--card))] hover:text-[rgb(var(--fg))]"
+							href={`mailto:${site.email}`}
+						>
+							Email
+						</a>
+						<a
+							class="focus-ring px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:bg-[rgb(var(--card))] hover:text-[rgb(var(--fg))]"
+							href={site.github}
+							target="_blank"
+							rel="noreferrer"
+						>
+							GitHub
+						</a>
+						<a
+							class="focus-ring px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:bg-[rgb(var(--card))] hover:text-[rgb(var(--fg))]"
+							href={site.linkedin}
+							target="_blank"
+							rel="noreferrer"
+						>
+							LinkedIn
+						</a>
+					</nav>
+				</div>
+			</details>
+
 			<a
 				class="focus-ring hidden size-10 items-center justify-center border border-transparent text-[rgb(var(--muted))] no-underline hover:border-[rgb(var(--border))] hover:text-[rgb(var(--fg))] sm:inline-flex"
 				href={`mailto:${site.email}`}
@@ -113,30 +180,6 @@ const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.s
 			</button>
 		</div>
 	</div>
-
-	<nav class="border-t border-[rgb(var(--border))] sm:hidden" aria-label="Primary (mobile)">
-		<div class="mx-auto flex max-w-5xl items-center gap-1 overflow-x-auto px-2 py-2">
-			{nav.map((item) => (
-				<a
-					class:list={[
-						'focus-ring whitespace-nowrap px-3 py-2 text-sm no-underline',
-						isActive(item.href)
-							? 'bg-[rgb(var(--card))] text-[rgb(var(--fg))] shadow-sm ring-1 ring-[rgb(var(--border))]'
-							: 'text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]',
-					]}
-					href={item.href}
-				>
-					{item.label}
-				</a>
-			))}
-			<a
-				class="focus-ring whitespace-nowrap px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:text-[rgb(var(--fg))]"
-				href={`mailto:${site.email}`}
-			>
-				Email
-			</a>
-		</div>
-	</nav>
 </header>
 
 
