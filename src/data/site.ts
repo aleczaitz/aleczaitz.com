@@ -15,6 +15,16 @@ export type Project = {
 	featured?: boolean;
 };
 
+export type Education = {
+	institution: string;
+	degree: string;
+	field?: string;
+	start: string;
+	end?: string;
+	location?: string;
+	highlights?: Array<string | ProjectLink>;
+};
+
 export const site = {
 	name: 'Alec Zaitz',
 	roles: ['Developer', 'Founder', 'UI/UX Designer', 'Data Enthusiast'],
@@ -154,6 +164,24 @@ export const projects: Project[] = [
 		],
 		featured: true,
 	  }
+];
+
+export const education: Education[] = [
+	{
+		institution: 'Brigham Young University',
+		degree: 'B.S. in Computer Science',
+		field: 'Software Engineering',
+		start: 'Aug 2023',
+		end: '2026',
+		location: 'Provo, UT',
+		highlights: [
+			'Cumulative GPA: 3.93',
+			{
+				label: 'Sandbox startup incubator 05 cohort',
+				href: 'https://sandbox.ing',
+			},
+		],
+	},
 ];
 
 

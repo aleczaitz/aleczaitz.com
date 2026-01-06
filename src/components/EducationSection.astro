@@ -1,0 +1,58 @@
+---
+import type { Education } from '../data/site';
+
+type Props = {
+	education: Education[];
+	title?: string;
+};
+
+const { education, title = 'Education' } = Astro.props as Props;
+---
+
+{
+	education?.length ? (
+		<section class="grid-panel p-6">
+			<h2 class="mono text-sm font-semibold uppercase tracking-wider text-[rgb(var(--fg))]">{title}</h2>
+			<ol class="mt-4 space-y-4">
+				{education.map((e) => (
+					<li class="space-y-1">
+						<div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+							<p class="text-sm font-semibold text-[rgb(var(--fg))]">{e.institution}</p>
+							<p class="mono text-xs text-[rgb(var(--muted))]">
+								{e.start}
+								{e.end ? ` — ${e.end}` : ''}
+							</p>
+						</div>
+						<p class="text-sm text-[rgb(var(--muted))]">
+							{e.degree}
+							{e.field ? `, ${e.field}` : ''}
+							{e.location ? ` · ${e.location}` : ''}
+						</p>
+						{e.highlights?.length ? (
+							<ul class="mt-2 list-disc space-y-1 pl-4 text-sm leading-6 text-[rgb(var(--muted))]">
+								{e.highlights.map((h) => (
+									<li>
+										{typeof h === 'string' ? (
+											h
+										) : (
+											<a
+												class="focus-ring underline decoration-[rgb(var(--border))] underline-offset-4 hover:decoration-[rgb(var(--accent))]"
+												href={h.href}
+												target="_blank"
+												rel="noreferrer"
+											>
+												{h.label}
+											</a>
+										)}
+									</li>
+								))}
+							</ul>
+						) : null}
+					</li>
+				))}
+			</ol>
+		</section>
+	) : null
+}
+
+

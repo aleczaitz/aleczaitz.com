@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { projects, site } from '../data/site';
+import EducationSection from '../components/EducationSection.astro';
+import { education, projects, site } from '../data/site';
 
 const featured = projects.filter((p) => p.featured).slice(0, 4);
 ---
@@ -52,10 +53,13 @@ const featured = projects.filter((p) => p.featured).slice(0, 4);
 					All projects →
 				</a>
 			</div>
-
+			
 			<div class="grid gap-4 sm:grid-cols-2">
 				{featured.map((p) => <ProjectCard project={p} variant="compact" />)}
 			</div>
 		</section>
+		<div>
+			<EducationSection education={education} />
+		</div>
 	</section>
 </Layout>

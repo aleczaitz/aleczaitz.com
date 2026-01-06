@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { site } from '../data/site';
+import EducationSection from '../components/EducationSection.astro';
+import { education, site } from '../data/site';
 
 const resumeHref = '/resume.pdf';
 ---
@@ -52,6 +53,10 @@ const resumeHref = '/resume.pdf';
 			</ul>
 		</div>
 	</section>
+
+	<div class="mt-8">
+		<EducationSection education={education} />
+	</div>
 </Layout>
 
 

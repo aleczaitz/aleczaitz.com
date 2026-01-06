@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { site } from '../data/site';
+import EducationSection from '../components/EducationSection.astro';
+import { education, site } from '../data/site';
 ---
 
 <Layout
@@ -35,6 +36,10 @@ import { site } from '../data/site';
 				<li>Data ingestion: validation, normalization, and observability.</li>
 				<li>Performance: minimal JS, fast navigations, and predictable rendering.</li>
 			</ul>
+		</div>
+
+		<div class="sm:col-span-2">
+			<EducationSection education={education} />
 		</div>
 
 		<div class="grid-panel p-6 sm:col-span-2">
