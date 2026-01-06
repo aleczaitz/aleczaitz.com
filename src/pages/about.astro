@@ -15,7 +15,7 @@ import { site } from '../data/site';
 	</header>
 
 	<section class="mt-8 grid gap-6 sm:grid-cols-2">
-		<div class="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] p-6 shadow-sm">
+		<div class="grid-panel p-6">
 			<h2 class="mono text-sm font-semibold uppercase tracking-wider text-[rgb(var(--fg))]">
 				Background
 			</h2>
@@ -26,7 +26,7 @@ import { site } from '../data/site';
 			</ul>
 		</div>
 
-		<div class="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] p-6 shadow-sm">
+		<div class="grid-panel p-6">
 			<h2 class="mono text-sm font-semibold uppercase tracking-wider text-[rgb(var(--fg))]">
 				Focus areas
 			</h2>
@@ -37,7 +37,7 @@ import { site } from '../data/site';
 			</ul>
 		</div>
 
-		<div class="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] p-6 shadow-sm sm:col-span-2">
+		<div class="grid-panel p-6 sm:col-span-2">
 			<h2 class="mono text-sm font-semibold uppercase tracking-wider text-[rgb(var(--fg))]">
 				What I’m seeking
 			</h2>
@@ -55,7 +55,7 @@ import { site } from '../data/site';
 				<div class="space-y-2">
 					<p class="text-sm text-[rgb(var(--muted))]">Best way to reach me:</p>
 					<a
-						class="focus-ring inline-flex w-fit items-center justify-center rounded-md bg-[rgb(var(--accent))] px-4 py-2 text-sm font-semibold text-white no-underline shadow-sm hover:opacity-95"
+						class="focus-ring inline-flex w-fit items-center justify-center bg-[rgb(var(--accent))] px-4 py-2 text-sm font-semibold text-white no-underline shadow-sm hover:opacity-95"
 						href={`mailto:${site.email}`}
 					>
 						Email {site.email}

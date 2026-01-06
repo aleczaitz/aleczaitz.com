@@ -56,12 +56,14 @@ const canonicalUrl = new URL(Astro.url.pathname, site.siteUrl).toString();
 		<script is:inline>
 			(() => {
 				const btn = document.querySelector('[data-theme-toggle]');
-				const label = document.querySelector('[data-theme-label]');
-				const setLabel = () => {
-					if (!label) return;
-					label.textContent = document.documentElement.classList.contains('dark') ? 'Dark' : 'Light';
+				const setA11y = () => {
+					if (!btn) return;
+					const isDark = document.documentElement.classList.contains('dark');
+					const next = isDark ? 'light' : 'dark';
+					btn.setAttribute('aria-label', `Switch to ${next} mode`);
+					btn.setAttribute('title', `Switch to ${next} mode`);
 				};
-				setLabel();
+				setA11y();
 				btn?.addEventListener('click', () => {
 					const html = document.documentElement;
 					const nextIsDark = !html.classList.contains('dark');
@@ -69,7 +71,7 @@ const canonicalUrl = new URL(Astro.url.pathname, site.siteUrl).toString();
 					try {
 						localStorage.setItem('theme', nextIsDark ? 'dark' : 'light');
 					} catch {}
-					setLabel();
+					setA11y();
 				});
 			})();
 		</script>

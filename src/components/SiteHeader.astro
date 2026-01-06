@@ -20,7 +20,7 @@ const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.s
 				<span class="mono text-sm font-semibold tracking-tight text-[rgb(var(--fg))]">
 					{site.name}
 				</span>
-				<span class="hidden text-sm text-[rgb(var(--muted))] sm:inline">{site.role}</span>
+				<span class="hidden text-sm text-[rgb(var(--muted))] sm:inline">{site.roles[0]}</span>
 			</a>
 		</div>
 
@@ -28,9 +28,9 @@ const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.s
 			{nav.map((item) => (
 				<a
 					class:list={[
-						'focus-ring rounded-md px-3 py-2 text-sm no-underline',
+						'focus-ring px-3 py-2 text-sm no-underline',
 						isActive(item.href)
-							? 'bg-[rgb(var(--card))] text-[rgb(var(--fg))] shadow-sm ring-1 ring-[rgb(var(--border))]'
+							? 'bg-[rgb(var(--bg))] text-[rgb(var(--fg))] ring-1 ring-[rgb(var(--border))]'
 							: 'text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]',
 					]}
 					href={item.href}
@@ -42,13 +42,13 @@ const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.s
 
 		<div class="flex items-center gap-2">
 			<a
-				class="focus-ring hidden rounded-md px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:text-[rgb(var(--fg))] sm:inline"
+				class="focus-ring hidden px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:text-[rgb(var(--fg))] sm:inline"
 				href={`mailto:${site.email}`}
 			>
 				Contact
 			</a>
 			<a
-				class="focus-ring hidden rounded-md px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:text-[rgb(var(--fg))] sm:inline"
+				class="focus-ring hidden px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:text-[rgb(var(--fg))] sm:inline"
 				href={site.github}
 				target="_blank"
 				rel="noreferrer"
@@ -56,7 +56,7 @@ const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.s
 				GitHub
 			</a>
 			<a
-				class="focus-ring hidden rounded-md px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:text-[rgb(var(--fg))] sm:inline"
+				class="focus-ring hidden px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:text-[rgb(var(--fg))] sm:inline"
 				href={site.linkedin}
 				target="_blank"
 				rel="noreferrer"
@@ -66,11 +66,45 @@ const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.s
 
 			<button
 				type="button"
-				class="focus-ring rounded-md border border-[rgb(var(--border))] bg-[rgb(var(--card))] px-3 py-2 text-sm text-[rgb(var(--fg))] shadow-sm"
+				class="focus-ring cursor-pointer grid size-10 place-items-center border border-[rgb(var(--border))] bg-[rgb(var(--bg))] text-[rgb(var(--fg))]"
 				data-theme-toggle
-				aria-label="Toggle dark mode"
+				aria-label="Toggle theme"
+				title="Toggle theme"
 			>
-				<span class="mono" data-theme-label>Theme</span>
+				<span class="sr-only">Toggle theme</span>
+				<span class="inline-flex items-center justify-center" aria-hidden="true">
+					<svg
+						data-theme-icon="sun"
+						viewBox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"
+							stroke="currentColor"
+							stroke-width="2"
+						/>
+						<path
+							d="M12 2v2M12 20v2M4 12H2M22 12h-2M5.64 5.64 4.22 4.22M19.78 19.78l-1.42-1.42M18.36 5.64l1.42-1.42M4.22 19.78l1.42-1.42"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						/>
+					</svg>
+					<svg
+						data-theme-icon="moon"
+						viewBox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M21 13.2A8.2 8.2 0 0 1 10.8 3a6.8 6.8 0 1 0 10.2 10.2Z"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linejoin="round"
+						/>
+					</svg>
+				</span>
 			</button>
 		</div>
 	</div>
@@ -80,7 +114,7 @@ const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.s
 			{nav.map((item) => (
 				<a
 					class:list={[
-						'focus-ring whitespace-nowrap rounded-md px-3 py-2 text-sm no-underline',
+						'focus-ring whitespace-nowrap px-3 py-2 text-sm no-underline',
 						isActive(item.href)
 							? 'bg-[rgb(var(--card))] text-[rgb(var(--fg))] shadow-sm ring-1 ring-[rgb(var(--border))]'
 							: 'text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]',
@@ -91,7 +125,7 @@ const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.s
 				</a>
 			))}
 			<a
-				class="focus-ring whitespace-nowrap rounded-md px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:text-[rgb(var(--fg))]"
+				class="focus-ring whitespace-nowrap px-3 py-2 text-sm text-[rgb(var(--muted))] no-underline hover:text-[rgb(var(--fg))]"
 				href={`mailto:${site.email}`}
 			>
 				Email

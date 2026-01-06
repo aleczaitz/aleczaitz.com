@@ -10,7 +10,7 @@
   --muted: 75 85 99; /* slate-600 */
   --card: 250 250 250; /* near-white */
   --border: 226 232 240; /* slate-200 */
-  --accent: 75 85 99; /* slate-600 */
+  --accent: 17 24 39; /* slate-900 */
 }
 
 .dark {
@@ -19,7 +19,7 @@
   --muted: 161 161 170; /* zinc-400 */
   --card: 12 12 16;
   --border: 39 39 42; /* zinc-800 */
-  --accent: 96 165 250; /* blue-400 */
+  --accent: 244 244 245; /* zinc-100 */
 }
 
 html {
@@ -45,10 +45,22 @@ body {
 
 /* Subtle "panel" aesthetic inspired by the screenshots */
 .page-frame {
-  background:
-    radial-gradient(600px 300px at 85% 20%, rgba(var(--accent) / 0.10), transparent 60%),
-    radial-gradient(700px 350px at 15% 0%, rgba(168 85 247 / 0.08), transparent 55%),
-    rgb(var(--bg));
+  background-color: rgb(var(--bg));
+  background-image:
+    linear-gradient(to right, rgb(var(--border) / 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(var(--border) / 0.35) 1px, transparent 1px),
+    radial-gradient(700px 350px at 85% 20%, rgb(var(--accent) / 0.12), transparent 60%),
+    radial-gradient(800px 400px at 15% 0%, rgb(168 85 247 / 0.10), transparent 55%);
+  background-size:
+    56px 56px,
+    56px 56px,
+    auto,
+    auto;
+  background-position:
+    -1px -1px,
+    -1px -1px,
+    center,
+    center;
 }
 
 .mono {
@@ -62,6 +74,27 @@ body {
 
 .focus-ring:focus-visible {
   box-shadow: 0 0 0 3px rgba(var(--accent) / 0.35);
+}
+
+.grid-panel {
+  border: 1px solid rgb(var(--border));
+  background: rgb(var(--bg) / 0.90);
+  box-shadow: 0 1px 0 rgb(var(--border) / 0.50);
+}
+
+/* Theme toggle icon visibility */
+html.dark [data-theme-icon="sun"] {
+  display: none;
+}
+
+html:not(.dark) [data-theme-icon="moon"] {
+  display: none;
+}
+
+[data-theme-icon] {
+  width: 18px;
+  height: 18px;
+  display: block;
 }
 
 

@@ -17,20 +17,20 @@ const resumeHref = '/resume.pdf';
 	</header>
 
 	<section class="mt-8 grid gap-4 sm:grid-cols-2">
-		<div class="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] p-6 shadow-sm">
+		<div class="grid-panel p-6">
 			<h2 class="mono text-sm font-semibold uppercase tracking-wider text-[rgb(var(--fg))]">
 				Download
 			</h2>
 			<div class="mt-4 flex flex-wrap gap-3">
 				<a
-					class="focus-ring inline-flex items-center justify-center rounded-md bg-[rgb(var(--accent))] px-4 py-2 text-sm font-semibold text-white no-underline shadow-sm hover:opacity-95"
+					class="focus-ring inline-flex items-center justify-center bg-[rgb(var(--accent))] px-4 py-2 text-sm font-semibold text-white no-underline shadow-sm hover:opacity-95"
 					href={resumeHref}
 					download
 				>
 					Download PDF
 				</a>
 				<a
-					class="focus-ring inline-flex items-center justify-center rounded-md border border-[rgb(var(--border))] bg-[rgb(var(--bg))] px-4 py-2 text-sm font-semibold text-[rgb(var(--fg))] no-underline shadow-sm hover:border-[rgb(var(--accent))]"
+					class="focus-ring inline-flex items-center justify-center border border-[rgb(var(--border))] bg-[rgb(var(--bg))] px-4 py-2 text-sm font-semibold text-[rgb(var(--fg))] no-underline shadow-sm hover:border-[rgb(var(--accent))]"
 					href={`mailto:${site.email}`}
 				>
 					Email
@@ -41,7 +41,7 @@ const resumeHref = '/resume.pdf';
 			</p>
 		</div>
 
-		<div class="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))] p-6 shadow-sm">
+		<div class="grid-panel p-6">
 			<h2 class="mono text-sm font-semibold uppercase tracking-wider text-[rgb(var(--fg))]">
 				Quick notes
 			</h2>
