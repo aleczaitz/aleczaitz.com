@@ -148,44 +148,15 @@ const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.s
 
 			<button
 				type="button"
-				class="btn-pressdown focus-ring cursor-pointer grid size-10 place-items-center border border-[rgb(var(--border))] bg-[rgb(var(--bg))] text-[rgb(var(--fg))]"
+				class="btn-pressdown focus-ring cursor-pointer grid size-10 place-items-center border border-[rgb(var(--border))] bg-[rgb(var(--bg))] text-[rgb(var(--muted))]"
 				data-theme-toggle
 				aria-label="Toggle theme"
 				title="Toggle theme"
 			>
 				<span class="sr-only">Toggle theme</span>
 				<span class="inline-flex items-center justify-center" aria-hidden="true">
-					<svg
-						data-theme-icon="sun"
-						viewBox="0 0 24 24"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"
-							stroke="currentColor"
-							stroke-width="2"
-						/>
-						<path
-							d="M12 2v2M12 20v2M4 12H2M22 12h-2M5.64 5.64 4.22 4.22M19.78 19.78l-1.42-1.42M18.36 5.64l1.42-1.42M4.22 19.78l1.42-1.42"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-						/>
-					</svg>
-					<svg
-						data-theme-icon="moon"
-						viewBox="0 0 24 24"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							d="M21 13.2A8.2 8.2 0 0 1 10.8 3a6.8 6.8 0 1 0 10.2 10.2Z"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linejoin="round"
-						/>
-					</svg>
+					<i data-theme-icon="sun" class="fa-solid fa-sun leading-none"></i>
+					<i data-theme-icon="moon" class="fa-solid fa-moon leading-none"></i>
 				</span>
 			</button>
 		</div>
