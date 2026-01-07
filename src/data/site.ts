@@ -43,7 +43,7 @@ export type Education = {
 
 export const site = {
 	name: 'Alec Zaitz',
-	roles: ['Developer', 'Founder', 'UI/UX Designer'],
+	roles: ['Fullstack Developer', 'Founder', 'UI/UX Designer'],
 	valueProp: 'building fast, reliable web products with strong UX and pragmatic engineering tradeoffs.',
 	location: 'Utah • Remote-friendly',
 	email: 'aleczaitz@gmail.com',
