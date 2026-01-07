@@ -59,6 +59,16 @@ const canonicalUrl = new URL(Astro.url.pathname, site.siteUrl).toString();
 		</main>
 		<SiteFooter />
 
+		<div
+			id="a11y-toast"
+			role="status"
+			aria-live="polite"
+			aria-atomic="true"
+			class="pointer-events-none fixed z-50 hidden rounded border border-[rgb(var(--border))] bg-[rgb(var(--bg))] px-2 py-1 text-xs text-[rgb(var(--fg))] shadow-lg"
+		>
+			Toast
+		</div>
+
 		<script is:inline>
 			(() => {
 				const btn = document.querySelector('[data-theme-toggle]');
@@ -78,6 +88,94 @@ const canonicalUrl = new URL(Astro.url.pathname, site.siteUrl).toString();
 						localStorage.setItem('theme', nextIsDark ? 'dark' : 'light');
 					} catch {}
 					setA11y();
+				});
+			})();
+		</script>
+
+		<script is:inline>
+			(() => {
+				const toast = document.getElementById('a11y-toast');
+				if (!(toast instanceof HTMLElement)) return;
+
+				let hideTimer = 0;
+				const showToast = (message, anchorEl) => {
+					window.clearTimeout(hideTimer);
+					toast.textContent = message;
+					toast.classList.remove('hidden');
+
+					// Position next to the clicked element (keep within viewport).
+					toast.style.left = '0px';
+					toast.style.top = '0px';
+					toast.style.transform = 'translate(0, 0)';
+
+					if (anchorEl instanceof Element) {
+						const rect = anchorEl.getBoundingClientRect();
+						const margin = 8;
+
+						// Measure after un-hiding.
+						const tRect = toast.getBoundingClientRect();
+
+						let left = rect.right + margin;
+						let top = rect.top + rect.height / 2 - tRect.height / 2;
+
+						// If overflowing right, place on the left side of anchor.
+						if (left + tRect.width + margin > window.innerWidth) {
+							left = rect.left - margin - tRect.width;
+						}
+
+						// Clamp to viewport.
+						left = Math.max(margin, Math.min(left, window.innerWidth - tRect.width - margin));
+						top = Math.max(margin, Math.min(top, window.innerHeight - tRect.height - margin));
+
+						toast.style.left = `${Math.round(left)}px`;
+						toast.style.top = `${Math.round(top)}px`;
+					}
+
+					hideTimer = window.setTimeout(() => toast.classList.add('hidden'), 2000);
+				};
+
+				const copyText = async (text) => {
+					try {
+						await navigator.clipboard.writeText(text);
+						return true;
+					} catch {
+						try {
+							const input = document.createElement('input');
+							input.value = text;
+							input.setAttribute('readonly', 'true');
+							input.style.position = 'fixed';
+							input.style.left = '-9999px';
+							document.body.appendChild(input);
+							input.select();
+							input.setSelectionRange(0, input.value.length);
+							const ok = document.execCommand('copy');
+							document.body.removeChild(input);
+							return ok;
+						} catch {
+							return false;
+						}
+					}
+				};
+
+				document.addEventListener('click', async (e) => {
+					const target = e.target;
+					if (!(target instanceof Element)) return;
+					const el = target.closest('[data-copy-email]');
+					if (!(el instanceof HTMLElement)) return;
+
+					const email = el.getAttribute('data-email') ?? '';
+					if (!email) return;
+
+					e.preventDefault();
+
+					const ok = await copyText(email);
+					if (ok) {
+						showToast(`${email} copied to clipboard`, el);
+						return;
+					}
+
+					// Fallback: if we can't copy, do the normal mailto navigation.
+					window.location.href = `mailto:${email}`;
 				});
 			})();
 		</script>

@@ -10,12 +10,22 @@ import { site } from '../data/site';
 		</div>
 
 		<div class="grid gap-2 sm:justify-end">
-			<a class="focus-ring text-sm text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]" href={`mailto:${site.email}`}>
-				{site.email}
+			<a
+				class="btn-pressdown focus-ring text-sm text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]"
+				href={`mailto:${site.email}`}
+				data-copy-email
+				data-email={site.email}
+				aria-label="Copy email"
+				title="Copy email"
+			>
+				<span class="inline-flex items-center gap-2">
+					<i class="fa-regular fa-copy text-xs leading-none" aria-hidden="true"></i>
+					{site.email}
+				</span>
 			</a>
 			<div class="flex flex-wrap gap-3">
 				<a
-					class="focus-ring text-sm text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]"
+					class="btn-pressdown focus-ring text-sm text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]"
 					href={site.github}
 					target="_blank"
 					rel="noreferrer"
@@ -23,17 +33,17 @@ import { site } from '../data/site';
 					GitHub
 				</a>
 				<a
-					class="focus-ring text-sm text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]"
+					class="btn-pressdown focus-ring text-sm text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]"
 					href={site.linkedin}
 					target="_blank"
 					rel="noreferrer"
 				>
 					LinkedIn
 				</a>
-				<a class="focus-ring text-sm text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]" href="/experience">
+				<a class="btn-pressdown focus-ring text-sm text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]" href="/experience">
 					Experience
 				</a>
-				<a class="focus-ring text-sm text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]" href="/resume">
+				<a class="btn-pressdown focus-ring text-sm text-[rgb(var(--muted))] hover:text-[rgb(var(--fg))]" href="/resume">
 					Resume
 				</a>
 			</div>

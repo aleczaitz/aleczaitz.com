@@ -44,7 +44,7 @@ export type Education = {
 export const site = {
 	name: 'Alec Zaitz',
 	roles: ['Developer', 'Founder', 'UI/UX Designer'],
-	valueProp: 'I build fast, reliable web products with strong UX and pragmatic engineering tradeoffs.',
+	valueProp: 'building fast, reliable web products with strong UX and pragmatic engineering tradeoffs.',
 	location: 'Utah • Remote-friendly',
 	email: 'aleczaitz@gmail.com',
 	github: 'https://github.com/aleczaitz',
@@ -198,7 +198,9 @@ export const experience: Experience[] = [
 			'Collaborated with engineers to optimize UI responsiveness, leading to faster user interactions and smoother app performance.',
 		],
 		tech: ['Flutter', 'Firebase', 'Postman', 'REST APIs'],
-		links: [{ label: 'Xcel Software', href: 'https://jobxcel.ai/' }],
+		links: [
+			{ label: 'Details', href: '/experience#xcel-software-intern' }, 
+			{ label: 'Xcel Software', href: 'https://jobxcel.ai/' }],
 		featured: true,
 	},
 	{
@@ -254,6 +256,7 @@ export const experience: Experience[] = [
 		],
 		tech: ['Basecamp', 'Google Sheets', 'Webconnex'],
 		links: [
+			{ label: 'Details', href: '/experience#water-lantern-festival' },
 			{ label: 'Water Lantern Festival', href: 'https://www.waterlanternfestival.com' },
 		],
 		featured: true,

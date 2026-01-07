@@ -27,6 +27,7 @@ html {
   background: rgb(var(--bg));
   color: rgb(var(--fg));
   text-rendering: optimizeLegibility;
+  scroll-padding-top: 5rem; /* Account for sticky header */
 }
 
 html.dark {
@@ -95,6 +96,17 @@ html:not(.dark) [data-theme-icon="moon"] {
   width: 18px;
   height: 18px;
   display: block;
+}
+
+/* Button pressdown invert animations */
+.btn-pressdown {
+  transition: all 0.15s ease;
+  transform-origin: center;
+}
+
+.btn-pressdown:active {
+  transform: scale(0.98);
+  filter: invert(1);
 }
 
 

@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import EducationSection from '../components/EducationSection.astro';
-import { education, site } from '../data/site';
+import { site } from '../data/site';
 ---
 
 <Layout
@@ -11,7 +10,7 @@ import { education, site } from '../data/site';
 	<header class="space-y-3">
 		<h1 class="text-3xl font-semibold tracking-tight text-[rgb(var(--fg))]">About</h1>
 		<p class="max-w-2xl text-base leading-7 text-[rgb(var(--muted))]">
-			I like shipping products that feel simple on the surface and are thoughtfully engineered underneath.
+			I'm a student founder building software through constant iteration and learning. Every project is an opportunity to improve.
 		</p>
 	</header>
 
@@ -21,49 +20,53 @@ import { education, site } from '../data/site';
 				Background
 			</h2>
 			<ul class="mt-4 list-disc space-y-2 pl-4 text-sm leading-6 text-[rgb(var(--muted))]">
-				<li>Full-stack engineer focused on product velocity without sacrificing quality.</li>
-				<li>Prefer small, composable systems with clear boundaries and failure modes.</li>
-				<li>Care about accessibility, performance, and maintainability from day one.</li>
+				<li>Background in event management and door-to-door sales, bringing customer-facing experience and organizational skills to product development.</li>
+				<li>Student founder balancing coursework with building real products and learning by doing.</li>
+				<li>Full-stack development with an emphasis on rapid iteration and user feedback.</li>
+				<li>Constantly learning new technologies while maintaining clean, scalable code.</li>
 			</ul>
 		</div>
 
 		<div class="grid-panel p-6">
 			<h2 class="mono text-sm font-semibold uppercase tracking-wider text-[rgb(var(--fg))]">
-				Focus areas
+				Learning focus
 			</h2>
 			<ul class="mt-4 list-disc space-y-2 pl-4 text-sm leading-6 text-[rgb(var(--muted))]">
-				<li>Frontend systems: design tokens, component architecture, and UX clarity.</li>
-				<li>Data ingestion: validation, normalization, and observability.</li>
-				<li>Performance: minimal JS, fast navigations, and predictable rendering.</li>
+				<li>Building intuitive user interfaces through iterative design and user testing.</li>
+				<li>Data systems that scale with real user growth and handle edge cases gracefully.</li>
+				<li>Performance optimization to create fast, reliable experiences for users.</li>
 			</ul>
-		</div>
-
-		<div class="sm:col-span-2">
-			<EducationSection education={education} />
 		</div>
 
 		<div class="grid-panel p-6 sm:col-span-2">
 			<h2 class="mono text-sm font-semibold uppercase tracking-wider text-[rgb(var(--fg))]">
-				What I’m seeking
+				Opportunities
 			</h2>
 			<div class="mt-4 grid gap-4 sm:grid-cols-2">
 				<div class="space-y-2">
 					<p class="text-sm text-[rgb(var(--muted))]">
-						I’m excited about roles where I can own meaningful product surface area and ship.
+						As a student founder, I'm looking for opportunities that combine learning with real impact.
 					</p>
 					<ul class="list-disc space-y-2 pl-4 text-sm leading-6 text-[rgb(var(--muted))]">
-						<li>Full-time or contract, product-focused teams</li>
-						<li>High bar for UX and engineering craft</li>
-						<li>Clear priorities, quick feedback loops</li>
+						<li>Mentorship and growth opportunities alongside experienced product builders</li>
+						<li>Environments that encourage rapid iteration and learning from user feedback</li>
+						<li>Roles where I can contribute to meaningful products while continuing my education</li>
 					</ul>
 				</div>
 				<div class="space-y-2">
-					<p class="text-sm text-[rgb(var(--muted))]">Best way to reach me:</p>
+					<p class="text-sm text-[rgb(var(--muted))]">Contact:</p>
 					<a
-						class="focus-ring inline-flex w-fit items-center justify-center bg-[rgb(var(--accent))] px-4 py-2 text-sm font-semibold text-white no-underline shadow-sm hover:opacity-95"
+						class="btn-pressdown focus-ring inline-flex w-fit items-center justify-center bg-[rgb(var(--accent))] px-4 py-2 text-sm font-semibold text-white no-underline shadow-sm hover:opacity-95"
 						href={`mailto:${site.email}`}
+						data-copy-email
+						data-email={site.email}
+						aria-label="Copy email"
+						title="Copy email"
 					>
-						Email {site.email}
+						<span class="inline-flex items-center gap-2">
+							<i class="fa-regular fa-copy text-xs leading-none" aria-hidden="true"></i>
+							Email {site.email}
+						</span>
 					</a>
 				</div>
 			</div>
